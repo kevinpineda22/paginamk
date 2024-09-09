@@ -127,10 +127,11 @@ body {
 /* Media Queries para dispositivos móviles */
 @media (max-width: 839px) {
   .menu-toggle {
+    display: block;
     position: relative;
     display: flex;
     top: 0rem;
-    left: -7rem;
+    left: -4rem;
   }
 
   .nav-list {
@@ -313,7 +314,7 @@ body {
 .footer {
     width: 100%;
     padding: 20px;
-    background-color: hsl(337, 100%, 43%);
+    background-color:  #89DC00;
     color: #ffffff;
     display: flex;
     flex-direction: column;
