@@ -127,7 +127,10 @@ body {
 /* Media Queries para dispositivos móviles */
 @media (max-width: 839px) {
   .menu-toggle {
-    display: block;
+    position: relative;
+    display: flex;
+    top: 0rem;
+    left: -7rem;
   }
 
   .nav-list {
