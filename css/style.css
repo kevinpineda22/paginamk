@@ -131,7 +131,7 @@ cursor: pointer;
   display: block;
   position: absolute;
   top: 15px; /* Ajusta la posición vertical si es necesario */
-  left: 50%; /* Centra horizontalmente */
+  left: 68%; /* Centra horizontalmente */
   transform: translateX(-50%); /* Ajusta el botón para que esté completamente centrado */
   font-size: 30px; /* Tamaño del icono */
   color: #ffffff; /* Color del icono, ajusta si es necesario */
