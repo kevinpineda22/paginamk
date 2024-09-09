@@ -630,3 +630,23 @@ main {
       width: 20px; /* Reducir tamaño en pantallas pequeñas */
   }
 }
+
+/* Estilos del botón de control de música */
+.music-control-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #210D65;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.music-control-button:hover {
+  background-color: #89DC00;
+  color: black;
+}

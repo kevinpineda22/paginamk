@@ -162,3 +162,34 @@ dots.forEach(dot => {
 mostrarSlide(currentIndex);
 // Comienza la navegación automática
 iniciarCarrusel();
+
+// JavaScript para controlar la música en vivo
+document.addEventListener("DOMContentLoaded", function () {
+  const liveMusic = document.getElementById("liveMusic");
+  const musicControl = document.getElementById("musicControl");
+
+  // Función para pausar o reproducir la música
+  musicControl.addEventListener("click", function () {
+      if (liveMusic.paused) {
+          liveMusic.play();
+          musicControl.textContent = "Pausar Música";
+      } else {
+          liveMusic.pause();
+          musicControl.textContent = "Reanudar Música";
+      }
+  });
+
+  // Opcional: Manejar la reproducción automática con eventos de usuario
+  // Para evitar bloqueos de reproducción automática en algunos navegadores
+  const enableAutoPlay = () => {
+      liveMusic.play().then(() => {
+          document.removeEventListener('click', enableAutoPlay);
+          document.removeEventListener('touchstart', enableAutoPlay);
+      }).catch((error) => {
+          console.log('Reproducción bloqueada por el navegador', error);
+      });
+  };
+
+  document.addEventListener('click', enableAutoPlay);
+  document.addEventListener('touchstart', enableAutoPlay);
+});
