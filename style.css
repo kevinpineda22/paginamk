@@ -129,9 +129,11 @@ body {
   .menu-toggle {
     display: block;
     position: absolute;
-    top: 15px; /* Ajusta la posición vertical */
-    right: 20px; /* Ajusta la posición horizontal */
-    font-size: 30px; /* Aumenta el tamaño del icono */
+    top: 15px; /* Ajusta la posición vertical si es necesario */
+    left: 64%; /* Centra el botón horizontalmente */
+    transform: translateX(-50%); /* Ajusta el botón para que esté completamente centrado */
+    font-size: 30px; /* Tamaño del icono */
+    color: #ffffff; /* Color del icono, ajusta si es necesario */
   }
 
   .nav-list {
