@@ -131,7 +131,7 @@ body {
     position: relative;
     display: flex;
     top: 0rem;
-    left: -4rem;
+    left: -6rem;
   }
 
   .nav-list {
@@ -314,7 +314,7 @@ body {
 .footer {
     width: 100%;
     padding: 20px;
-    background-color:  #89DC00;
+    background-color: #89DC00;
     color: #ffffff;
     display: flex;
     flex-direction: column;
