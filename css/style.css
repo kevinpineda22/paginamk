@@ -19,6 +19,9 @@ display: flex;
 justify-content: center; /* Centra el contenedor del navbar en la pantalla */
 }
 
+
+
+
 /* Contenedor del navbar */
 .container-navbar {
 display: flex;
@@ -192,7 +195,6 @@ cursor: pointer;
 }
 }
 
-
 /* Estilos del carrusel */
 .carousel {
   position: relative;
@@ -203,13 +205,15 @@ cursor: pointer;
   border-radius: 10px;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(240, 240, 255, 0.85));
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  height: auto; /* Se adapta automáticamente al contenido */
+  height: auto;
   transition: all 0.3s ease;
+  box-sizing: border-box; /* Para evitar desbordamientos */
 }
 
 .container-slides {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  height: 100%; /* Asegura que los slides ocupen toda la altura del carrusel */
 }
 
 .slider {
@@ -218,10 +222,17 @@ cursor: pointer;
   overflow: hidden;
 }
 
+.slide {
+  min-width: 100%; /* Asegura que cada slide ocupe el 100% del carrusel */
+  display: flex; /* Utilizar flexbox para centrar el contenido */
+  justify-content: center;
+  align-items: center;
+}
+
 .slide img {
   width: 100%;
-  height: auto; /* Mantén la altura automática para adaptarse al ancho */
-  object-fit: cover;
+  height: 100%;
+  object-fit: cover; /* Ajusta las imágenes para que cubran todo el contenedor */
   transition: transform 0.5s ease;
 }
 
@@ -267,48 +278,24 @@ cursor: pointer;
   }
 }
 
-/* Media Query para pantallas de 480px o menos */
 @media (max-width: 480px) {
   .dot {
-    position: relative;;
-    width: 10px;
-    height: 10px;
-    top: -1rem;
-    left: 1rem;
-    
+    width: 8px;
+    height: 8px;
   }
 
   .slide img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      transition: transform 
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 
-  /* Asegura que el navbar ocupe todo el ancho de la pantalla */
-  .navbar {
-    width: 110%;
-    margin: 0; /* Elimina cualquier margen que pueda estar reduciendo el ancho */
-    padding: 0; /* Elimina cualquier padding adicional */
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
-  }
-
-  /* Asegura que el contenedor del carrusel ocupe todo el ancho de la pantalla */
-  .carousel{
-    position: relative;
-    width: 110%;
-    max-width: 110%;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 10px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(240, 240, 255, 0.85));
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    height: auto; /* Se adapta automáticamente al contenido */
-    transition: all 0.3s ease;
-    
-    
+  .carousel {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 }
+
 
 
 
