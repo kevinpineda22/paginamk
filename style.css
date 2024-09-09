@@ -128,10 +128,10 @@ body {
 @media (max-width: 839px) {
   .menu-toggle {
     display: block;
-    position: relative;
-    display: flex;
-    top: 0rem;
-    left: -6rem;
+    position: absolute;
+    top: 15px; /* Ajusta la posición vertical */
+    right: 20px; /* Ajusta la posición horizontal */
+    font-size: 30px; /* Aumenta el tamaño del icono */
   }
 
   .nav-list {
