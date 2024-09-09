@@ -313,7 +313,7 @@ body {
 .footer {
     width: 100%;
     padding: 20px;
-    background-color: #89DC00;
+    background-color: hsl(337, 100%, 43%);
     color: #ffffff;
     display: flex;
     flex-direction: column;
