@@ -708,18 +708,23 @@ main {
     height: 12vw;
     min-width: 45px;
     min-height: 45px;
+    min-height: 45px;
+        display: flex;
+        position: relative;
+        top: -31rem;
+        left: -2rem
   }
 
   .play-icon {
-    border-left: 1.2vw solid white;
-    border-top: 0.5vw solid transparent;
-    border-bottom: 0.5vw solid transparent;
+    border-left: 1vw solid white;
+    border-top: 0.7vw solid transparent;
+    border-bottom: 1vw solid transparent;
   }
 
   .play-button.playing .play-icon {
-    height: 0.6vw;
-    width: 1vw;
-    border-right: 1vw solid white;
-    border-left: 1vw solid white;
+    height: 6vw;
+    width: 6vw;
+    border-right: 6solid white;
+    border-left: 6 solid white;
   }
 }
