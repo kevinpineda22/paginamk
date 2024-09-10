@@ -618,22 +618,102 @@ main {
   }
 }
 
-/* Estilos del botón de control de música */
-.music-control-button {
+/* Estilos boton de musica */
+.audio-player-container {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 10px 20px;
-  background-color: #210D65;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
+  z-index: 1000;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
 }
 
-.music-control-button:hover {
-  background-color: #89DC00;
-  color: black;
+/* Estilos base para el botón */
+.play-button {
+  background-color: #210D65; /* Color base */
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.play-button:hover {
+  background-color: #89DC00; /* Color al pasar el cursor */
+  transform: scale(1.1);
+}
+
+.play-icon {
+  width: 0;
+  height: 0;
+  border-left: 12px solid white; /* Icono de reproducción */
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  margin-left: 2px;
+}
+
+/* Estilo para cuando el audio está reproduciendo */
+.play-button.playing .play-icon {
+  border-left: 0;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 10px solid white;
+  border-left: 10px solid white;
+  height: 10px;
+  width: 15px;
+}
+
+/* Responsividad: Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .audio-player-container {
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .play-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .play-icon {
+    border-left: 10px solid white;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+  }
+
+  .play-button.playing .play-icon {
+    height: 8px;
+    width: 12px;
+    border-right: 8px solid white;
+    border-left: 8px solid white;
+  }
+}
+
+/* Ajustes adicionales para pantallas aún más pequeñas */
+@media (max-width: 480px) {
+  .audio-player-container {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .play-button {
+    width: 45px;
+    height: 45px;
+  }
+
+  .play-icon {
+    border-left: 8px solid white;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+
+  .play-button.playing .play-icon {
+    height: 6px;
+    width: 10px;
+    border-right: 6px solid white;
+    border-left: 6px solid white;
+  }
 }

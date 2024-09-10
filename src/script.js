@@ -163,33 +163,46 @@ mostrarSlide(currentIndex);
 // Comienza la navegación automática
 iniciarCarrusel();
 
-// JavaScript para controlar la música en vivo
-document.addEventListener("DOMContentLoaded", function () {
-  const liveMusic = document.getElementById("liveMusic");
-  const musicControl = document.getElementById("musicControl");
 
-  // Función para pausar o reproducir la música
-  musicControl.addEventListener("click", function () {
-      if (liveMusic.paused) {
-          liveMusic.play();
-          musicControl.textContent = "Pausar Música";
-      } else {
-          liveMusic.pause();
-          musicControl.textContent = "Reanudar Música";
-      }
-  });
+//funcion de reproductor de musica
+const playButton = document.getElementById('playButton');
+const audio = document.getElementById('live-audio');
+let isPlaying = false;
 
-  // Opcional: Manejar la reproducción automática con eventos de usuario
-  // Para evitar bloqueos de reproducción automática en algunos navegadores
-  const enableAutoPlay = () => {
-      liveMusic.play().then(() => {
-          document.removeEventListener('click', enableAutoPlay);
-          document.removeEventListener('touchstart', enableAutoPlay);
-      }).catch((error) => {
-          console.log('Reproducción bloqueada por el navegador', error);
-      });
-  };
-
-  document.addEventListener('click', enableAutoPlay);
-  document.addEventListener('touchstart', enableAutoPlay);
+playButton.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play();
+        playButton.classList.add('playing'); // Cambia el icono cuando está reproduciendo
+        isPlaying = true;
+    } else {
+        audio.pause();
+        playButton.classList.remove('playing'); // Cambia el icono cuando está en pausa
+        isPlaying = false;
+    }
 });
+
+// Permite arrastrar el botón por la página
+playButton.addEventListener('mousedown', function (e) {
+    let shiftX = e.clientX - playButton.getBoundingClientRect().left;
+    let shiftY = e.clientY - playButton.getBoundingClientRect().top;
+
+    function moveAt(pageX, pageY) {
+        playButton.style.left = pageX - shiftX + 'px';
+        playButton.style.top = pageY - shiftY + 'px';
+    }
+
+    function onMouseMove(event) {
+        moveAt(event.pageX, event.pageY);
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+
+    playButton.onmouseup = function () {
+        document.removeEventListener('mousemove', onMouseMove);
+        playButton.onmouseup = null;
+    };
+});
+
+playButton.ondragstart = function () {
+    return false;
+};
