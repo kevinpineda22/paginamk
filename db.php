@@ -1,10 +1,14 @@
 <?php
-// Conexión a la base de datos
-$servername = "34.174.238.249";
-$username = "upqt0r0t82mjq";
-$password = "";
-$dbname = "postulaciones";
+// Mostrar errores para diagnóstico
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
+// Conexión a la base de datos
+$servername = "localhost";            // Utiliza "localhost" según tu configuración
+$username = "s3hl1jcpkb699";          // Nombre de usuario correcto de la base de datos
+$password = "tu_contraseña_correcta"; // La contraseña asociada con este usuario (puedes restablecerla en el panel de SiteGround)
+$dbname = "dbhtgnbwtmskvr";  
 // Crear la conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
