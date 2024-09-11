@@ -5,10 +5,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Conexión a la base de datos
-$servername = "localhost";          // Utiliza "localhost" según tu configuración
-$username = "urmauqo3ktwbx";          // Nombre de usuario correcto de la base de datos
-$password = "D83b13I&*%25"; // La contraseña asociada con este usuario (puedes restablecerla en el panel de SiteGround)
-$dbname = "dbvgttealukrpu";  
+$servername = "localhost";
+$username = "urmauqo3ktwbx";
+$password = "D83b13I&*%25";
+$dbname = "dbvgttealukrpu";
+
 // Crear la conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -34,9 +35,19 @@ $recomendado = $_POST['recomendado'];
 
 // Manejo del archivo adjunto
 $hoja_vida_blob = null;
+$allowed_types = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+$max_file_size = 5 * 1024 * 1024; // 5 MB
+
 if (isset($_FILES['hoja-vida']) && $_FILES['hoja-vida']['error'] == UPLOAD_ERR_OK) {
-    $hoja_vida = $_FILES['hoja-vida']['tmp_name'];
-    $hoja_vida_blob = addslashes(file_get_contents($hoja_vida));
+    $file_type = $_FILES['hoja-vida']['type'];
+    $file_size = $_FILES['hoja-vida']['size'];
+    
+    if (in_array($file_type, $allowed_types) && $file_size <= $max_file_size) {
+        $hoja_vida = $_FILES['hoja-vida']['tmp_name'];
+        $hoja_vida_blob = file_get_contents($hoja_vida);
+    } else {
+        die("Error: El archivo subido no es válido o excede el tamaño máximo permitido.");
+    }
 } else {
     $hoja_vida_blob = null; // Si el archivo no se sube, el campo puede ser null
 }
@@ -50,6 +61,7 @@ if (!$stmt) {
     die("Error en la preparación de la consulta: " . $conn->error);
 }
 
+// Usar 'bind_param' para manejar los datos y evitar inyecciones SQL
 $stmt->bind_param('ssssssssssssss', $fecha_postulacion, $nombre_apellido, $nivel_educativo, $cargo, $telefono, $genero, 
         $pais_domicilio, $ciudad_domicilio, $zona_residencia, $barrio, $fecha_nacimiento, $tipo_documento, $recomendado, $hoja_vida_blob);
 
@@ -62,7 +74,4 @@ if ($stmt->execute()) {
 // Cerrar la conexión
 $stmt->close();
 $conn->close();
-
-echo "Formulario enviado con éxito.";
 ?>
-
