@@ -1,7 +1,7 @@
 <?php
 // Conexión a la base de datos
-$servername = "localhost";
-$username = "root";
+$servername = "34.174.238.249";
+$username = "upqt0r0t82mjq";
 $password = "";
 $dbname = "postulaciones";
 
