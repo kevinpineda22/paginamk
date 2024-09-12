@@ -144,6 +144,7 @@
         }
         
     </style>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <div class="header">
@@ -258,6 +259,11 @@
                 <div class="form-group">
                     <label for="hoja-vida">Adjuntar Hoja de Vida:</label>
                     <input type="file" id="hoja-vida" name="hoja-vida" accept=".pdf,.doc,.docx" required>
+                </div> 
+
+                <div class="g-recaptcha" data-sitekey="6LejBUEqAAAAAMY0KFh7KCN9TTH2kJYNV3i8VJbm">
+                    
+
                 </div>
                 <button type="submit" class="submit-button">Enviar</button>
             </form>
