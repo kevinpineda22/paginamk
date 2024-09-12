@@ -4,6 +4,20 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Clave secreta de tu reCAPTCHA
+$secret_key = '6LejBUEqAAAAAIk9FGFkYUc04l_2282wKTcAGYEZ';
+
+// Respuesta del reCAPTCHA enviada por el formulario
+$recaptcha_response = $_POST['g-recaptcha-response'];
+
+// Verificar la respuesta del reCAPTCHA con Google
+$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret_key&response=$recaptcha_response");
+$response_keys = json_decode($response, true);
+
+if (intval($response_keys["success"]) !== 1) {
+    die("Error: Por favor, verifica que no eres un robot.");
+}
+
 // Conexión a la base de datos
 $servername = "localhost";
 $username = "urmauqo3ktwbx";
@@ -70,6 +84,7 @@ if ($stmt->execute()) {
 } else {
     echo "Error al ejecutar la consulta: " . $stmt->error;
 }
+
 
 // Cerrar la conexión
 $stmt->close();
