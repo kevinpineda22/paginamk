@@ -33,20 +33,20 @@ if ($conn->connect_error) {
 }
 
 // Obtener los datos del formulario
-$fecha_postulacion = $_POST['Fecha_postulacion'];
-$nombre_apellido = $_POST['Nombre_Apellido'];
-$nivel_educativo = $_POST['Nivel_Educativo'];
-$cargo = $_POST['Cargo'];
-$telefono = $_POST['Telefono'];
-$genero = $_POST['Genero'];
-$pais_domicilio = $_POST['Pais_Domicilio'];
-$ciudad_domicilio = $_POST['Ciudad_Domicilio'];
-$zona_residencia = $_POST['Zona_Residencia'];
-$barrio = $_POST['Barrio'];
-$fecha_nacimiento = $_POST['Fecha_Nacimiento'];
-$tipo_documento = $_POST['Tipo_Documento'];
-$numero_documento = $_POST['Numero_Documento'];
-$recomendado = $_POST['Recomendado'];
+$fecha_postulacion = $_POST['fecha_postulacion'];
+$nombre_apellido = $_POST['nombre_apellido'];
+$nivel_educativo = $_POST['nivel_educativo'];
+$cargo = $_POST['cargo'];
+$telefono = $_POST['telefono'];
+$genero = $_POST['genero'];
+$pais_domicilio = $_POST['pais_domicilio'];
+$ciudad_domicilio = $_POST['ciudad_domicilio'];
+$zona_residencia = $_POST['zona_residencia'];
+$barrio = $_POST['barrio'];
+$fecha_nacimiento = $_POST['fecha_nacimiento'];
+$tipo_documento = $_POST['tipo_documento'];
+$numero_documento = $_POST['numero_documento'];
+$recomendado = $_POST['recomendado'];
 
 // Validación del número de documento (debe ser numérico y tener una longitud específica, por ejemplo, 8 a 12 dígitos)
 if (!is_numeric($numero_documento) || strlen($numero_documento) < 8 || strlen($numero_documento) > 12) {
@@ -58,9 +58,9 @@ $hoja_vida_blob = null;
 $allowed_types = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
 $max_file_size = 5 * 1024 * 1024; // 5 MB
 
-if (isset($_FILES['Hoja_Vida']) && $_FILES['Hoja_Vida']['error'] == UPLOAD_ERR_OK) {
-    $file_type = $_FILES['Hoja_Vida']['type'];
-    $file_size = $_FILES['Hoja_Vida']['size'];
+if (isset($_FILES['hoja_vida']) && $_FILES['hoja_vida']['error'] == UPLOAD_ERR_OK) {
+    $file_type = $_FILES['hoja_vida']['type'];
+    $file_size = $_FILES['hoja_vida']['size'];
     
     if (in_array($file_type, $allowed_types) && $file_size <= $max_file_size) {
         $hoja_vida = $_FILES['Hoja_Vida']['tmp_name'];
