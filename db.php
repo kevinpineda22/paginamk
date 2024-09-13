@@ -22,7 +22,7 @@ if (intval($response_keys["success"]) !== 1) {
 $servername = "localhost";
 $username = "urmauqo3ktwbx";
 $password = "D83b13I&*%25";
-$dbname = "dbvgttealukrpu";
+$dbname = "dboscgeuvminkv";
 
 // Crear la conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -33,31 +33,37 @@ if ($conn->connect_error) {
 }
 
 // Obtener los datos del formulario
-$fecha_postulacion = $_POST['fecha-postulacion'];
-$nombre_apellido = $_POST['nombre-apellido'];
-$nivel_educativo = $_POST['nivel-educativo'];
-$cargo = $_POST['cargo'];
-$telefono = $_POST['telefono'];
-$genero = $_POST['genero'];
-$pais_domicilio = $_POST['pais-domicilio'];
-$ciudad_domicilio = $_POST['ciudad-domicilio'];
-$zona_residencia = $_POST['zona-residencia'];
-$barrio = $_POST['barrio'];
-$fecha_nacimiento = $_POST['fecha-nacimiento'];
-$tipo_documento = $_POST['tipo-documento'];
-$recomendado = $_POST['recomendado'];
+$fecha_postulacion = $_POST['Fecha_postulacion'];
+$nombre_apellido = $_POST['Nombre_Apellido'];
+$nivel_educativo = $_POST['Nivel_Educativo'];
+$cargo = $_POST['Cargo'];
+$telefono = $_POST['Telefono'];
+$genero = $_POST['Genero'];
+$pais_domicilio = $_POST['Pais_Domicilio'];
+$ciudad_domicilio = $_POST['Ciudad_Domicilio'];
+$zona_residencia = $_POST['Zona_Residencia'];
+$barrio = $_POST['Barrio'];
+$fecha_nacimiento = $_POST['Fecha_Nacimiento'];
+$tipo_documento = $_POST['Tipo_Documento'];
+$numero_documento = $_POST['Numero_Documento'];
+$recomendado = $_POST['Recomendado'];
+
+// Validación del número de documento (debe ser numérico y tener una longitud específica, por ejemplo, 8 a 12 dígitos)
+if (!is_numeric($numero_documento) || strlen($numero_documento) < 8 || strlen($numero_documento) > 12) {
+    die("Error: El número de documento no es válido. Debe ser numérico y tener entre 8 y 12 dígitos.");
+}
 
 // Manejo del archivo adjunto
 $hoja_vida_blob = null;
 $allowed_types = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
 $max_file_size = 5 * 1024 * 1024; // 5 MB
 
-if (isset($_FILES['hoja-vida']) && $_FILES['hoja-vida']['error'] == UPLOAD_ERR_OK) {
-    $file_type = $_FILES['hoja-vida']['type'];
-    $file_size = $_FILES['hoja-vida']['size'];
+if (isset($_FILES['Hoja_Vida']) && $_FILES['Hoja_Vida']['error'] == UPLOAD_ERR_OK) {
+    $file_type = $_FILES['Hoja_Vida']['type'];
+    $file_size = $_FILES['Hoja_Vida']['size'];
     
     if (in_array($file_type, $allowed_types) && $file_size <= $max_file_size) {
-        $hoja_vida = $_FILES['hoja-vida']['tmp_name'];
+        $hoja_vida = $_FILES['Hoja_Vida']['tmp_name'];
         $hoja_vida_blob = file_get_contents($hoja_vida);
     } else {
         die("Error: El archivo subido no es válido o excede el tamaño máximo permitido.");
@@ -68,23 +74,22 @@ if (isset($_FILES['hoja-vida']) && $_FILES['hoja-vida']['error'] == UPLOAD_ERR_O
 
 // Preparar y ejecutar la consulta
 $stmt = $conn->prepare("INSERT INTO postulaciones (fecha_postulacion, nombre_apellido, nivel_educativo, cargo, telefono, genero, 
-        pais_domicilio, ciudad_domicilio, zona_residencia, barrio, fecha_nacimiento, tipo_documento, recomendado, hoja_vida)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        pais_domicilio, ciudad_domicilio, zona_residencia, barrio, fecha_nacimiento, tipo_documento, numero_documento, recomendado, hoja_vida)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 if (!$stmt) {
     die("Error en la preparación de la consulta: " . $conn->error);
 }
 
 // Usar 'bind_param' para manejar los datos y evitar inyecciones SQL
-$stmt->bind_param('ssssssssssssss', $fecha_postulacion, $nombre_apellido, $nivel_educativo, $cargo, $telefono, $genero, 
-        $pais_domicilio, $ciudad_domicilio, $zona_residencia, $barrio, $fecha_nacimiento, $tipo_documento, $recomendado, $hoja_vida_blob);
+$stmt->bind_param('sssssssssssssss', $fecha_postulacion, $nombre_apellido, $nivel_educativo, $cargo, $telefono, $genero, 
+        $pais_domicilio, $ciudad_domicilio, $zona_residencia, $barrio, $fecha_nacimiento, $tipo_documento, $numero_documento, $recomendado, $hoja_vida_blob);
 
 if ($stmt->execute()) {
     echo "Postulación guardada exitosamente.";
 } else {
     echo "Error al ejecutar la consulta: " . $stmt->error;
 }
-
 
 // Cerrar la conexión
 $stmt->close();
