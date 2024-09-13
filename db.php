@@ -24,7 +24,6 @@ $username = "urmauqo3ktwbx";
 $password = "7#3;$2_p1Ncq";
 $dbname = "dboscgeuvminkv";
 
-
 // Crear la conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -33,21 +32,21 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Obtener los datos del formulario
-$fecha_postulacion = $_POST['fecha_postulacion'];
-$nombre_apellido = $_POST['nombre_apellido'];
-$nivel_educativo = $_POST['nivel_educativo'];
-$cargo = $_POST['cargo'];
-$telefono = $_POST['telefono'];
-$genero = $_POST['genero'];
-$pais_domicilio = $_POST['pais_domicilio'];
-$ciudad_domicilio = $_POST['ciudad_domicilio'];
-$zona_residencia = $_POST['zona_residencia'];
-$barrio = $_POST['barrio'];
-$fecha_nacimiento = $_POST['fecha_nacimiento'];
-$tipo_documento = $_POST['tipo_documento'];
-$numero_documento = $_POST['numero_documento'];
-$recomendado = $_POST['recomendado'];
+// Obtener los datos del formulario y asegurar que existen
+$fecha_postulacion = isset($_POST['fecha_postulacion']) ? $_POST['fecha_postulacion'] : null;
+$nombre_apellido = isset($_POST['nombre_apellido']) ? $_POST['nombre_apellido'] : null;
+$nivel_educativo = isset($_POST['nivel_educativo']) ? $_POST['nivel_educativo'] : null;
+$cargo = isset($_POST['cargo']) ? $_POST['cargo'] : null;
+$telefono = isset($_POST['telefono']) ? $_POST['telefono'] : null;
+$genero = isset($_POST['genero']) ? $_POST['genero'] : null;
+$pais_domicilio = isset($_POST['pais_domicilio']) ? $_POST['pais_domicilio'] : null;
+$ciudad_domicilio = isset($_POST['ciudad_domicilio']) ? $_POST['ciudad_domicilio'] : null;
+$zona_residencia = isset($_POST['zona_residencia']) ? $_POST['zona_residencia'] : null;
+$barrio = isset($_POST['barrio']) ? $_POST['barrio'] : null;
+$fecha_nacimiento = isset($_POST['fecha_nacimiento']) ? $_POST['fecha_nacimiento'] : null;
+$tipo_documento = isset($_POST['tipo_documento']) ? $_POST['tipo_documento'] : null;
+$numero_documento = isset($_POST['numero_documento']) ? $_POST['numero_documento'] : null;
+$recomendado = isset($_POST['recomendado']) ? $_POST['recomendado'] : null;
 
 // Validación del número de documento (debe ser numérico y tener una longitud específica, por ejemplo, 8 a 12 dígitos)
 if (!is_numeric($numero_documento) || strlen($numero_documento) < 8 || strlen($numero_documento) > 12) {
@@ -64,13 +63,11 @@ if (isset($_FILES['hoja_vida']) && $_FILES['hoja_vida']['error'] == UPLOAD_ERR_O
     $file_size = $_FILES['hoja_vida']['size'];
     
     if (in_array($file_type, $allowed_types) && $file_size <= $max_file_size) {
-        $hoja_vida = $_FILES['Hoja_Vida']['tmp_name'];
+        $hoja_vida = $_FILES['hoja_vida']['tmp_name'];
         $hoja_vida_blob = file_get_contents($hoja_vida);
     } else {
         die("Error: El archivo subido no es válido o excede el tamaño máximo permitido.");
     }
-} else {
-    $hoja_vida_blob = null; // Si el archivo no se sube, el campo puede ser null
 }
 
 // Preparar y ejecutar la consulta
