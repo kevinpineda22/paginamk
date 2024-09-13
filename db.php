@@ -18,7 +18,10 @@ if (intval($response_keys["success"]) !== 1) {
     die("Error: Por favor, verifica que no eres un robot.");
 }
 
-// Conexión a la base de datos
+
+
+
+// Configuración de la conexión a la base de datos
 $servername = "localhost";
 $username = "urmauqo3ktwbx";
 $password = "7#3;$2_p1Ncq";
@@ -32,39 +35,29 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Obtener los datos del formulario y asegurar que existen
-$fecha_postulacion = isset($_POST['fecha_postulacion']) ? $_POST['fecha_postulacion'] : null;
-$nombre_apellido = isset($_POST['nombre_apellido']) ? $_POST['nombre_apellido'] : null;
-$nivel_educativo = isset($_POST['nivel_educativo']) ? $_POST['nivel_educativo'] : null;
-$cargo = isset($_POST['cargo']) ? $_POST['cargo'] : null;
-$telefono = isset($_POST['telefono']) ? $_POST['telefono'] : null;
-$genero = isset($_POST['genero']) ? $_POST['genero'] : null;
-$pais_domicilio = isset($_POST['pais_domicilio']) ? $_POST['pais_domicilio'] : null;
-$ciudad_domicilio = isset($_POST['ciudad_domicilio']) ? $_POST['ciudad_domicilio'] : null;
-$zona_residencia = isset($_POST['zona_residencia']) ? $_POST['zona_residencia'] : null;
-$barrio = isset($_POST['barrio']) ? $_POST['barrio'] : null;
-$fecha_nacimiento = isset($_POST['fecha_nacimiento']) ? $_POST['fecha_nacimiento'] : null;
-$tipo_documento = isset($_POST['tipo_documento']) ? $_POST['tipo_documento'] : null;
-$numero_documento = isset($_POST['numero_documento']) ? $_POST['numero_documento'] : null;
-$recomendado = isset($_POST['recomendado']) ? $_POST['recomendado'] : null;
+// Obtener los datos del formulario
+$fecha_postulacion = $_POST['fecha-postulacion'];
+$nombre_apellido = $_POST['nombre-apellido'];
+$nivel_educativo = $_POST['nivel-educativo'];
+$cargo = $_POST['cargo'];
+$telefono = $_POST['telefono'];
+$genero = $_POST['genero'];
+$pais_domicilio = $_POST['pais-domicilio'];
+$ciudad_domicilio = $_POST['ciudad-domicilio'];
+$zona_residencia = $_POST['zona-residencia'];
+$barrio = $_POST['barrio'];
+$fecha_nacimiento = $_POST['fecha-nacimiento'];
+$tipo_documento = $_POST['tipo-documento'];
+$numero_documento = $_POST['numero-documento']; // Nuevo campo agregado
+$recomendado = $_POST['recomendado'];
 
 
 
 // Manejo del archivo adjunto
 $hoja_vida_blob = null;
-$allowed_types = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
-$max_file_size = 5 * 1024 * 1024; // 5 MB
-
-if (isset($_FILES['hoja_vida']) && $_FILES['hoja_vida']['error'] == UPLOAD_ERR_OK) {
-    $file_type = $_FILES['hoja_vida']['type'];
-    $file_size = $_FILES['hoja_vida']['size'];
-    
-    if (in_array($file_type, $allowed_types) && $file_size <= $max_file_size) {
-        $hoja_vida = $_FILES['hoja_vida']['tmp_name'];
-        $hoja_vida_blob = file_get_contents($hoja_vida);
-    } else {
-        die("Error: El archivo subido no es válido o excede el tamaño máximo permitido.");
-    }
+if (isset($_FILES['hoja-vida']) && $_FILES['hoja-vida']['error'] == UPLOAD_ERR_OK) {
+    $hoja_vida = $_FILES['hoja-vida']['tmp_name'];
+    $hoja_vida_blob = addslashes(file_get_contents($hoja_vida));
 }
 
 // Preparar y ejecutar la consulta
@@ -76,10 +69,11 @@ if (!$stmt) {
     die("Error en la preparación de la consulta: " . $conn->error);
 }
 
-// Usar 'bind_param' para manejar los datos y evitar inyecciones SQL
+// Vincular los parámetros a la consulta preparada
 $stmt->bind_param('sssssssssssssss', $fecha_postulacion, $nombre_apellido, $nivel_educativo, $cargo, $telefono, $genero, 
         $pais_domicilio, $ciudad_domicilio, $zona_residencia, $barrio, $fecha_nacimiento, $tipo_documento, $numero_documento, $recomendado, $hoja_vida_blob);
 
+// Ejecutar la consulta
 if ($stmt->execute()) {
     echo "Postulación guardada exitosamente.";
 } else {
@@ -89,4 +83,6 @@ if ($stmt->execute()) {
 // Cerrar la conexión
 $stmt->close();
 $conn->close();
+
+echo "Formulario enviado con éxito.";
 ?>
