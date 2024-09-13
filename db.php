@@ -21,8 +21,9 @@ if (intval($response_keys["success"]) !== 1) {
 // Conexión a la base de datos
 $servername = "localhost";
 $username = "urmauqo3ktwbx";
-$password = "D83b13I&*%25";
+$password = "7#3;$2_p1Ncq";
 $dbname = "dboscgeuvminkv";
+
 
 // Crear la conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
