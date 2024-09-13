@@ -48,10 +48,7 @@ $tipo_documento = isset($_POST['tipo_documento']) ? $_POST['tipo_documento'] : n
 $numero_documento = isset($_POST['numero_documento']) ? $_POST['numero_documento'] : null;
 $recomendado = isset($_POST['recomendado']) ? $_POST['recomendado'] : null;
 
-// Validación del número de documento (debe ser numérico y tener una longitud específica, por ejemplo, 8 a 12 dígitos)
-if (!is_numeric($numero_documento) || strlen($numero_documento) < 8 || strlen($numero_documento) > 12) {
-    die("Error: El número de documento no es válido. Debe ser numérico y tener entre 8 y 12 dígitos.");
-}
+
 
 // Manejo del archivo adjunto
 $hoja_vida_blob = null;
