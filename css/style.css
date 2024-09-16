@@ -10,178 +10,105 @@ body {
 
 /* Estilos del navbar */
 .navbar {
-background-color: #210D65;
-position: sticky;
-top: 0;
-z-index: 1000;
-width: 100%; /* Asegura que el navbar ocupe todo el ancho de la pantalla */
-display: flex;
-justify-content: center; /* Centra el contenedor del navbar en la pantalla */
+  background-color: #210D65;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%; /* Asegura que el navbar ocupe todo el ancho de la pantalla */
+  display: flex;
+  justify-content: center; /* Centra el contenedor del navbar en la pantalla */
 }
-
-
-
 
 /* Contenedor del navbar */
 .container-navbar {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 10px 20px;
-max-width: 1200px;
-width: 100%; /* Ocupa todo el ancho del contenedor del navbar */
-box-sizing: border-box; /* Incluye el padding en el ancho total */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  max-width: 1200px;
+  width: 100%; /* Ocupa todo el ancho del contenedor del navbar */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
 /* Logo */
 .logo img {
-height: 40px;
-margin-left: 1rem; /* Usar margin-left en lugar de left para mejor responsividad */
+  height: 40px;
+  margin-left: 1rem; /* Usar margin-left en lugar de left para mejor responsividad */
 }
 
 /* Botón de alternar menú (hamburguesa) */
 .menu-toggle {
-display: none;
-font-size: 24px;
-cursor: pointer;
-background: none;
-border: none;
-color: #ffffff;
-z-index: 1002;
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #ffffff;
+  z-index: 1002;
 }
 
 /* Lista del navbar */
 .nav-list {
-display: flex;
-list-style: none;
-margin: 0;
-padding: 0;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Elementos de la lista */
 .nav-list li {
-margin-left: 20px;
-position: relative;
+  margin-left: 20px;
+  position: relative;
 }
 
 /* Enlaces del navbar */
 .nav-list a {
-text-decoration: none;
-color: #ffffff;
-font-weight: 500;
-padding: 10px;
-transition: color 0.3s, background-color 0.3s;
-border-radius: 5px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 10px;
+  transition: color 0.3s, background-color 0.3s;
+  border-radius: 5px;
 }
 
 .nav-list a:hover {
-color: black;
-background-color: beige;
+  color: black;
+  background-color: beige;
 }
 
 /* Lista desplegable */
 .sub-nav-list {
-display: none;
-list-style: none;
-margin: 0;
-padding: 0;
-background-color: #f9f9f9;
-position: absolute;
-top: 100%;
-left: 0;
-width: 200px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-border-radius: 8px;
-opacity: 0;
-visibility: hidden;
-transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-transform: translateY(-10px);
-z-index: 1000;
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  transform: translateY(-10px);
+  z-index: 1000;
 }
 
 .sub-nav-list.show {
-display: block;
-opacity: 1;
-visibility: visible;
-transform: translateY(0);
-}
-
-.sub-nav-list li {
-margin: 0;
-}
-
-.sub-nav-list a {
-display: block;
-padding: 12px 20px;
-color: #210D65;
-text-decoration: none;
-transition: background-color 0.3s, color 0.3s;
-border-bottom: 1px solid #ddd;
-}
-
-.sub-nav-list a:hover {
-background-color: #89DC00;
-color: #000;
-}
-
-.nav-item {
-cursor: pointer;
-}
-
-/* Media Queries para dispositivos móviles */
-@media (max-width: 839px) {
-.menu-toggle {
   display: block;
-  position: absolute;
-  top: 15px; /* Ajusta la posición vertical si es necesario */
-  left: 68%; /* Centra horizontalmente */
-  transform: translateX(-50%); /* Ajusta el botón para que esté completamente centrado */
-  font-size: 30px; /* Tamaño del icono */
-  color: #ffffff; /* Color del icono, ajusta si es necesario */
-}
-
-.nav-list {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #210D65;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  display: none;
-  z-index: 1001;
-  transition: transform 0.3s ease-in-out;
-  transform: translateY(-100%);
-}
-
-.nav-list.show {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
   transform: translateY(0);
 }
 
-.nav-list li {
-  margin: 10px 0;
-}
-
-.nav-list a {
-  font-size: 18px;
-  padding: 8px;
-}
-
-/* Ajustes para la lista desplegable en móviles */
-.nav-list li .sub-nav-list {
-  position: static;
-  width: 100%;
-  box-shadow: none;
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-  transition: none;
+.sub-nav-list li {
+  margin: 0;
 }
 
 .sub-nav-list a {
+  display: block;
   padding: 12px 20px;
   color: #210D65;
   text-decoration: none;
@@ -189,11 +116,139 @@ cursor: pointer;
   border-bottom: 1px solid #ddd;
 }
 
-.nav-list li .sub-nav-list a:hover {
+.sub-nav-list a:hover {
   background-color: #89DC00;
   color: #000;
 }
+
+.nav-item {
+  cursor: pointer;
 }
+
+/* Navbar para móviles - Ajustes */
+@media (max-width: 839px) {
+  /* Mostrar el botón de menú */
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px;
+    color: #ffffff;
+    z-index: 1002; /* Mantener el botón visible sobre el menú */
+  }
+
+  /* Ocultar la lista de navegación hasta que se despliegue */
+  .nav-list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Usar 100vh para que ocupe toda la pantalla */
+    background-color: #210D65;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    z-index: 1001;
+    transition: transform 0.4s ease-in-out; /* Animación más suave */
+    transform: translateY(-100%);
+  }
+
+  /* Cuando el menú está abierto */
+  .nav-list.show {
+    display: flex;
+    transform: translateY(0); /* Mostrar el menú */
+  }
+
+  /* Estilos de los enlaces del menú */
+  .nav-list a {
+    font-size: 20px; /* Tamaño de texto adecuado para pantallas pequeñas */
+    padding: 15px;
+    text-align: center; /* Centrar el texto en los enlaces */
+    width: 100%; /* Asegurar que los enlaces ocupen todo el ancho del contenedor */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transiciones suaves */
+  }
+
+  /* Ajustes para los elementos de la lista desplegable en móviles */
+  .sub-nav-list {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+  }
+
+  /* Espaciado adecuado entre los elementos del menú */
+  .nav-list li {
+    margin: 15px 0; /* Más espacio entre los elementos para mejorar la experiencia táctil */
+  }
+
+  /* Estilos para la lista desplegable */
+  .sub-nav-list a {
+    padding: 12px 20px;
+    color: #210D65;
+    text-decoration: none;
+    border-bottom:  #ddd;
+  }
+
+  .sub-nav-list a:hover {
+    
+    background-color: #89DC00;
+    color: #000;
+  }
+}
+
+/* Transiciones suaves para el botón de hamburguesa */
+.menu-toggle {
+  transition: transform 0.4s ease-in-out;
+}
+
+
+/* Media Queries para tabletas (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .menu-toggle {
+    right: 30px; /* Ajusta el botón de hamburguesa en tabletas */
+  }
+
+  .nav-list a {
+    font-size: 20px; /* Aumenta el tamaño de la fuente en tabletas */
+  }
+
+  .nav-list {
+    justify-content: flex-start;
+  }
+}
+
+/* Media Queries para pantallas grandes (min-width: 1200px) */
+@media (min-width: 1200px) {
+  .container-navbar {
+    padding: 15px 40px; /* Aumenta el espacio en pantallas grandes */
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: row; /* Menú en línea para pantallas grandes */
+    position: relative; /* Evita que el menú se superponga al contenido */
+    height: auto;
+    background-color: transparent;
+    transform: none;
+  }
+
+  .nav-list a {
+    font-size: 22px;
+    padding: 12px; /* Más padding para mayor accesibilidad */
+  }
+}
+
+
+
+
+
+
+
 
 /* Estilos del carrusel */
 .carousel {
