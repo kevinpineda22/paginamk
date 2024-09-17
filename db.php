@@ -4,13 +4,19 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Incluir SweetAlert2 (se cargará en el frontend)
+// Incluir SweetAlert2
 echo '
     <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Aquí dentro se ejecutarán las alertas de SweetAlert2
+            });
+        </script>
     </head>
 ';
+
 
 // Clave secreta de tu reCAPTCHA
 $secret_key = '6LejBUEqAAAAAIk9FGFkYUc04l_2282wKTcAGYEZ';
@@ -23,8 +29,18 @@ $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?s
 $response_keys = json_decode($response, true);
 
 if (intval($response_keys["success"]) !== 1) {
-    die("Error: Por favor, verifica que no eres un robot.");
+    echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor, verifica que no eres un robot.'
+            });
+        });
+    </script>";
+    exit;
 }
+
 
 
 // Configuración de la conexión a la base de datos
@@ -39,13 +55,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Verificar la conexión
 if ($conn->connect_error) {
     echo "<script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Error de conexión',
-            text: 'No se pudo conectar a la base de datos: " . $conn->connect_error . "',
-            confirmButtonText: 'Aceptar'
-        }).then(() => {
-            window.location.href = 'index.html'; // Redirigir a index.html
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error de conexión',
+                text: 'No se pudo conectar a la base de datos: " . $conn->connect_error . "'
+            }).then(() => {
+                window.location.href = 'index.html';
+            });
         });
     </script>";
     exit;
@@ -83,17 +100,19 @@ $stmt = $conn->prepare("INSERT INTO postulaciones (fecha_postulacion, nombre_ape
 
 if (!$stmt) {
     echo "<script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Error en la consulta',
-            text: 'Error en la preparación de la consulta: " . $conn->error . "',
-            confirmButtonText: 'Aceptar'
-        }).then(() => {
-            window.location.href = 'index.html'; // Redirigir a index.html
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error en la consulta',
+                text: 'Error en la preparación de la consulta: " . $conn->error . "'
+            }).then(() => {
+                window.location.href = 'index.html';
+            });
         });
     </script>";
     exit;
 }
+
 
 // Vincular los parámetros a la consulta preparada
 $stmt->bind_param('sssssssssssssss', $fecha_postulacion, $nombre_apellido, $nivel_educativo, $cargo, $telefono, $genero, 
@@ -101,31 +120,30 @@ $stmt->bind_param('sssssssssssssss', $fecha_postulacion, $nombre_apellido, $nive
 
 // Ejecutar la consulta
 if ($stmt->execute()) {
-    // Si la consulta es exitosa, mostrar alerta de éxito
     echo "<script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Postulación guardada',
-            text: 'Tu postulación ha sido guardada con éxito.',
-            confirmButtonText: 'Aceptar'
-        }).then(() => {
-            window.location.href = 'index.html'; // Redirigir a index.html
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Postulación guardada',
+                text: 'Tu postulación ha sido guardada con éxito.'
+            }).then(() => {
+                window.location.href = 'index.html';
+            });
         });
     </script>";
 } else {
-    // Si ocurre un error, mostrar alerta de error
     echo "<script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Error al guardar',
-            text: 'Ocurrió un error al guardar tu postulación: " . $stmt->error . "',
-            confirmButtonText: 'Aceptar'
-        }).then(() => {
-            window.location.href = 'index.html'; // Redirigir a index.html
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al guardar',
+                text: 'Ocurrió un error al guardar tu postulación: " . $stmt->error . "'
+            }).then(() => {
+                window.location.href = 'index.html';
+            });
         });
     </script>";
 }
-
 // Cerrar la conexión
 $stmt->close();
 $conn->close();
