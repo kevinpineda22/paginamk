@@ -35,6 +35,8 @@ if (intval($response_keys["success"]) !== 1) {
                 icon: 'error',
                 title: 'Error',
                 text: 'Por favor, verifica que no eres un robot.'
+            }).then(() => {
+                window.location.href = 'index.html';
             });
         });
     </script>";
