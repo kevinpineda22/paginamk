@@ -635,7 +635,7 @@ main {
 
   .title-sedes {
     font-size: 1.5em;
-    top: 1.5rem;
+      top: 7rem;
   }
  
   
@@ -759,7 +759,6 @@ main {
     bottom: 6vw; /* Ajustes relativos */
     right: 6vw;
   }
-  
   .play-button {
     width: 12vw; /* Tamaño relativo */
     height: 12vw;
