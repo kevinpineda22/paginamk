@@ -184,6 +184,14 @@
             .submit-button {
                 font-size: 1.1em;
             }
+            .logo{
+                max-width: 100%; /* Asegura que la imagen no se salga del contenedor */
+                height: auto; /* Mantiene la relación de aspecto de la imagen */
+                margin: 0 auto; /* Centra la imagen horizontalmente */
+                display: block; /* Asegura que la imagen se comporte como un bloque */
+                border-radius: 10px; /* Mantiene los bordes redondeados */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra sutil */
+            }
         }
         
         @media (max-width: 480px) {
@@ -198,6 +206,13 @@
                 display: block; /* Asegura que la imagen se comporte como un bloque */
                 border-radius: 10px; /* Mantiene los bordes redondeados */
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra sutil */
+            }
+            .g-recaptcha {
+                margin-bottom: 20px; /* Espaciado debajo del captcha */
+                max-width: 100%; /* Limita el ancho del captcha al contenedor */
+                box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total */
+                display: flex; /* Permite centrar el captcha en su contenedor */
+                justify-content: center; /* Centra horizontalmente el captcha */
             }
             input[type="text"], input[type="date"], select, input[type="file"] {
                 padding: 10px;
