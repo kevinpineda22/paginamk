@@ -7,139 +7,210 @@
     <title>Formulario de Postulación</title>
     <link rel="icon" href="assets/imagenes/icono pagina.png">
     <style>
+       
+        
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            font-family: 'Roboto', sans-serif;
+            background-color: white;
+            position: relative;
         }
+        
+        .logo {
+            max-width: 500px;
+            margin: 20px auto; 
+            display: block; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+        }
+        
+        .container {
+            max-width: 921px;
+            margin: 20px auto; /* Aumenté el margen superior para mayor separación */
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+        
         .header {
-            background-color: #210D65;
+            background-color: #210D65; 
             color: white;
             padding: 20px;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
         }
+        
         .header h1 {
             margin: 0;
             font-size: 2.5em;
         }
-        .container {
-            max-width: 90%;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        .intro, .benefits {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .intro h2 {
-            font-size: 1.8em;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .intro p {
-            font-size: 1.1em;
-            color: #555;
-            line-height: 1.6; /* Mejora la legibilidad */
-            margin: 0 auto; /* Centra el párrafo */
-            max-width: 800px; /* Limita el ancho del párrafo para mejor lectura */
-        }
-        .benefits {
-            background-color: #eafaf1;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .benefits h3 {
-            font-size: 1.4em;
+        
+        .intro h2, .benefits h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
             color: #210D65;
-            margin-bottom: 10px;
+            text-align: center;
         }
+        
+        .intro p, .benefits ul {
+            font-size: 1.2em;
+            color: #555;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        
         .benefits ul {
             list-style: none;
             padding: 0;
-            font-size: 1.1em;
-            color: #333;
+            margin: 20px 0;
         }
+        
         .benefits ul li {
-            margin-bottom: 12px;
-        }
-        .form-container {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 20px;
-            background-color:white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .form-group {
             margin-bottom: 15px;
+            font-size: 1.1em;
+            padding-left: 30px;
+            position: relative;
         }
+        
+        .benefits ul li::before {
+            content: '✔';
+            color: #89DC00; 
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .benefits ul li:hover::before {
+            color: #210D65; /* Cambia el color al hacer hover */
+        }
+        
+        .form-container {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 25px; 
+        }
+        
+        .form-group input[type="checkbox"] {
+            accent-color: #89DC00; /* Cambia el color del checkbox */
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin-right: 10px;
+            position: relative;
+            top: 2.5rem;
+            left: -0.5rem;
+        }
+        
+        #terminos-condiciones {
+            font-size: 1em;
+            color: black;
+            margin-top: 10px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
         label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            font-size: 1.1em;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
         }
+        
         input[type="text"], input[type="date"], select, input[type="file"] {
             width: 100%;
-            padding: 13px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
             box-sizing: border-box;
-            font-size: 1em;
+            font-size: 1.1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #f9f9f9; 
         }
+        
+        input[type="text"]:focus, input[type="date"]:focus, select:focus {
+            border-color: #89DC00; 
+            outline: none;
+            box-shadow: 0 0 5px rgba(137, 220, 0, 0.5); 
+        }
+        
         .submit-button {
             background-color: #89DC00;
             color: white;
-            padding: 12px;
+            padding: 15px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             width: 100%;
             font-size: 1.2em;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
+        
         .submit-button:hover {
-            background-color:#210D65;
+            background-color: #210D65;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
         }
+        
+        .g-recaptcha {
+            margin-bottom: 20px;
+        }
+        
+        /* Responsive Styles */
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2em;
             }
-            .intro h2 {
-                font-size: 1.5em;
-            }
-            .intro p {
-                font-size: 1em;
-            }
-            .benefits h3 {
-                font-size: 1.2em;
-            }
-            .benefits ul {
-                font-size: 1em;
-            }
-            .submit-button {
-                font-size: 1em;
-                padding: 10px;
-            }
-        }
-        @media (max-width: 480px) {
             .container {
-                padding: 10px;
+                padding: 20px;
+                margin: 10px; /* Reduce el margen en pantallas más pequeñas */
             }
             .form-group {
-                margin-bottom: 10px;
+                margin-bottom: 15px;
+            }
+            .submit-button {
+                font-size: 1.1em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+                margin: 5px; /* Reduce aún más el margen para pantallas pequeñas */
+            }
+            .logo {
+                max-width: 100%; /* Asegura que la imagen no se salga del contenedor */
+                height: auto; /* Mantiene la relación de aspecto de la imagen */
+                margin: 0 auto; /* Centra la imagen horizontalmente */
+                display: block; /* Asegura que la imagen se comporte como un bloque */
+                border-radius: 10px; /* Mantiene los bordes redondeados */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra sutil */
             }
             input[type="text"], input[type="date"], select, input[type="file"] {
-                font-size: 0.9em;
                 padding: 10px;
+                font-size: 1em;
+            }
+            .header h1 {
+                font-size: 1.8em; /* Reducción adicional del tamaño del texto en pantallas muy pequeñas */
+            }
+            .intro h2, .benefits h3 {
+                font-size: 1.8em; /* Tamaño de texto reducido para títulos */
+            }
+            .intro p, .benefits ul {
+                font-size: 1em; /* Tamaño de texto reducido para párrafos */
             }
         }
         
@@ -148,9 +219,14 @@
 </head>
 <body>
     <div class="header">
+       
         <h1>Bienvenido a Nuestra Compañía</h1>
+      
     </div>
     <div class="container">
+        <img src="/assets/imagenes/img_fondo.jpg" alt="Logo de la Compañía" class="logo">
+        
+
         <div class="intro">
             <h2>¿Quieres ser parte de nuestra compañía?</h2>
             <p>En nuestra empresa, te ofrecemos una oportunidad única de crecimiento profesional y personal. Disfruta de un ambiente laboral colaborativo, formación continua, y beneficios exclusivos para nuestros empleados.</p>
@@ -158,10 +234,11 @@
         <div class="benefits">
             <h3>Beneficios de Trabajar con Nosotros</h3>
             <ul>
-                <li>Salario competitivo y bonificaciones.</li>
+                
                 <li>Oportunidades de desarrollo profesional y capacitación.</li>
                 <li>Ambiente de trabajo inclusivo y colaborativo.</li>
                 <li>Seguro médico y beneficios adicionales.</li>
+                <li>Salario competitivo y bonificaciones.</li>
             </ul>
         </div>
         <div class="intro">
@@ -266,10 +343,14 @@
                     <label for="hoja-vida">Adjuntar Hoja de Vida:</label>
                     <input type="file" id="hoja-vida" name="hoja-vida" accept=".pdf,.doc,.docx" required>
                 </div> 
+                <div class="form-group">
+                    <input type="checkbox" id="terminos-condiciones" name="terminos-condiciones" required>
+                    <label  for="terminos-condiciones" id="terminos-condiciones" >Acepto los <a href="condiciones.html" target="_blank">términos y condiciones</a></label>
+                </div>
+                
 
                 <div class="g-recaptcha" data-sitekey="6LejBUEqAAAAAMY0KFh7KCN9TTH2kJYNV3i8VJbm">
-                    
-                    
+                
 
                 </div>
                 <button type="submit" class="submit-button">Enviar</button>
