@@ -260,7 +260,7 @@
             <h2>Postúlate y forma parte de nuestra compañía</h2>
         </div>
         <div class="form-container">
-            <form action="db.php" method="post" enctype="multipart/form-data">
+            <form id="miformacion" action="db.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="fecha-postulacion">Fecha de Postulación:</label>
                     <input type="date" id="fecha-postulacion" name="fecha-postulacion" required>
@@ -356,10 +356,10 @@
                 </div>
                 <div class="form-group">
                     <label for="hoja-vida">Adjuntar Hoja de Vida:</label>
-                    <input type="file" id="hoja-vida" name="hoja-vida" accept=".pdf,.doc,.docx" required>
+                    <input type="file" id="hoja-vida" name="hoja-vida" accept=".pdf" required >
                 </div> 
                 <div class="form-group">
-                    <input type="checkbox" id="terminos-condiciones" name="terminos-condiciones" required>
+                    <input type="checkbox" id="terminos-condiciones" name="terminos-condiciones">
                     <label  for="terminos-condiciones" id="terminos-condiciones" >Acepto los <a href="condiciones.html" target="_blank">términos y condiciones</a></label>
                 </div>
                 
@@ -372,5 +372,6 @@
             </form>
         </div>
     </div>
+    <script type="module" src="/src/trabaja.js"></script>
 </body>
 </html>
