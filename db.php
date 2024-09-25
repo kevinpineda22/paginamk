@@ -96,7 +96,7 @@ $validMimeTypes = ['application/pdf']; // Tipos MIME válidos
 if (isset($_FILES['hoja-vida']) && $_FILES['hoja-vida']['error'] == UPLOAD_ERR_OK) {
     // Validar el tamaño del archivo
     if ($_FILES['hoja-vida']['size'] > $maxFileSize) {
-        die('El archivo excede el tamaño máximo permitido de 2 MB.');
+        die('El archivo excede el tamaño máximo permitido de 600KB.');
     }
 
     // Validar el tipo de archivo
