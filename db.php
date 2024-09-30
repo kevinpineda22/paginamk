@@ -78,7 +78,7 @@ $cargo = $_POST['cargo'];
 $telefono = $_POST['telefono'];
 $genero = $_POST['genero'];
 $pais_domicilio = $_POST['pais-domicilio'];
-$ciudad_domicilio = $_POST['ciudad-domicilio'];
+$Municipio_domicilio = $_POST['Municipio-domicilio'];
 $zona_residencia = $_POST['zona-residencia'];
 $barrio = $_POST['barrio'];
 $fecha_nacimiento = $_POST['fecha-nacimiento'];
@@ -115,7 +115,7 @@ if (isset($_FILES['hoja-vida']) && $_FILES['hoja-vida']['error'] == UPLOAD_ERR_O
 
 // Preparar y ejecutar la consulta
 $stmt = $conn->prepare("INSERT INTO postulaciones (fecha_postulacion, nombre_apellido, nivel_educativo, cargo, telefono, genero, 
-        pais_domicilio, ciudad_domicilio, zona_residencia, barrio, fecha_nacimiento, tipo_documento, numero_documento, recomendado, hoja_vida)
+        pais_domicilio, Municipio_domicilio, zona_residencia, barrio, fecha_nacimiento, tipo_documento, numero_documento, recomendado, hoja_vida)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 if (!$stmt) {
@@ -136,7 +136,7 @@ if (!$stmt) {
 
 // Vincular los parámetros a la consulta preparada
 $stmt->bind_param('sssssssssssssss', $fecha_postulacion, $nombre_apellido, $nivel_educativo, $cargo, $telefono, $genero, 
-        $pais_domicilio, $ciudad_domicilio, $zona_residencia, $barrio, $fecha_nacimiento, $tipo_documento, $numero_documento, $recomendado, $hoja_vida_blob);
+        $pais_domicilio, $Municipio_domicilio, $zona_residencia, $barrio, $fecha_nacimiento, $tipo_documento, $numero_documento, $recomendado, $hoja_vida_blob);
 
 // Ejecutar la consulta
 if ($stmt->execute()) {
