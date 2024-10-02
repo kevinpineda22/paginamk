@@ -110,6 +110,35 @@ if (isset($_FILES['hoja-vida']) && $_FILES['hoja-vida']['error'] == UPLOAD_ERR_O
     $hoja_vida_blob = addslashes(file_get_contents($hoja_vida));
 
 }
+// Verificar que se ha pasado un ID
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    // Preparar la consulta
+    $sql = "SELECT hoja_vida FROM postulaciones WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($hoja_vida_blob);
+    $stmt->fetch();
+
+    // Comprobar si se obtuvo el archivo
+    if ($stmt->num_rows > 0) {
+        // Establecer las cabeceras para la descarga
+        header("Content-Type: application/pdf");
+        header("Content-Disposition: attachment; filename='hoja_de_vida_$id.pdf'");
+        header("Content-Length: " . strlen($hoja_vida_blob));
+        echo $hoja_vida_blob;
+    } else {
+        echo "No se encontró el archivo.";
+    }
+
+    $stmt->close();
+} else {
+    echo "ID no proporcionado.";
+}
+
 
 
 
