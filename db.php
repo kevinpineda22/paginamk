@@ -90,32 +90,11 @@ $recomendado = $_POST['recomendado'];
 
 // Manejo del archivo adjunto
 $hoja_vida_blob = null;
-$maxFileSize = 600 * 1024; // Tamaño máximo permitido: 600 KB
-$validMimeTypes = ['application/pdf']; // Tipos MIME válidos
-
 if (isset($_FILES['hoja-vida']) && $_FILES['hoja-vida']['error'] == UPLOAD_ERR_OK) {
-    // Validar el tamaño del archivo
-    if ($_FILES['hoja-vida']['size'] > $maxFileSize) {
-        die('El archivo excede el tamaño máximo permitido de 600KB.');
-    }
-
-    // Validar el tipo de archivo
-    $fileMimeType = mime_content_type($_FILES['hoja-vida']['tmp_name']);
-    if (!in_array($fileMimeType, $validMimeTypes)) {
-        die('Por favor, sube un archivo PDF válido.');
-    }
-
-    // Validar la extensión del archivo
-    $fileExtension = pathinfo($_FILES['hoja-vida']['name'], PATHINFO_EXTENSION);
-    if (strtolower($fileExtension) !== 'pdf') {
-        die('Por favor, sube un archivo PDF válido.');
-    }
-
-    // Leer el contenido del archivo
     $hoja_vida = $_FILES['hoja-vida']['tmp_name'];
     $hoja_vida_blob = addslashes(file_get_contents($hoja_vida));
-
-    // Aquí puedes proceder a almacenar $hoja_vida_blob en la base de datos
+} else {
+    $hoja_vida_blob = null; // Si el archivo no se sube, el campo puede ser null
 }
 
 
