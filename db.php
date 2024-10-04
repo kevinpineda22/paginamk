@@ -105,10 +105,17 @@ if (isset($_FILES['hoja-vida']) && $_FILES['hoja-vida']['error'] == UPLOAD_ERR_O
         die('Por favor, sube un archivo PDF válido.');
     }
 
+    // Validar la extensión del archivo
+    $fileExtension = pathinfo($_FILES['hoja-vida']['name'], PATHINFO_EXTENSION);
+    if (strtolower($fileExtension) !== 'pdf') {
+        die('Por favor, sube un archivo PDF válido.');
+    }
+
     // Leer el contenido del archivo
     $hoja_vida = $_FILES['hoja-vida']['tmp_name'];
     $hoja_vida_blob = addslashes(file_get_contents($hoja_vida));
 
+    // Aquí puedes proceder a almacenar $hoja_vida_blob en la base de datos
 }
 
 

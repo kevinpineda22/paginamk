@@ -35,17 +35,23 @@ if (isset($_GET['id'])) {
 
         // Verificar si se encontró el archivo
         if ($hoja_vida_blob) {
+            // Verificar que el contenido del blob no esté vacío
+            if (empty($hoja_vida_blob)) {
+                die("El archivo está vacío.");
+            }
+
             // Establecer encabezados para la descarga
             header('Content-Type: application/pdf'); // Tipo MIME del archivo
             header('Content-Disposition: attachment; filename="hoja_vida.pdf"'); // Nombre del archivo al descargar
             header('Content-Length: ' . strlen($hoja_vida_blob)); // Longitud del contenido
 
             // Limpiar el buffer de salida
-            ob_clean();
-            flush();
+            ob_clean(); // Limpia el buffer de salida
+            flush(); // Asegura que se envíe el buffer
 
             // Enviar el contenido del archivo al navegador
             echo $hoja_vida_blob;
+            exit; // Termina el script después de enviar el archivo
         } else {
             echo "Archivo no encontrado.";
         }
