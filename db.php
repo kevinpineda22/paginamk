@@ -88,8 +88,8 @@ $recomendado = $_POST['recomendado'];
 
 
 
-// Manejo del archivo adjunto
-$hoja_vida_blob = null;
+/// Manejo del archivo adjunto
+$hoja_vida_path = null;
 $maxFileSize = 600 * 1024; // Tamaño máximo permitido: 600 KB
 $validMimeTypes = ['application/pdf']; // Tipos MIME válidos
 
@@ -105,17 +105,22 @@ if (isset($_FILES['hoja-vida']) && $_FILES['hoja-vida']['error'] == UPLOAD_ERR_O
         die('Por favor, sube un archivo PDF válido.');
     }
 
-    // Validar la extensión del archivo
-    $fileExtension = pathinfo($_FILES['hoja-vida']['name'], PATHINFO_EXTENSION);
-    if (strtolower($fileExtension) !== 'pdf') {
-        die('Por favor, sube un archivo PDF válido.');
+    // Especificar la carpeta donde se almacenarán los archivos
+    $uploadDir = 'uploads/'; // Asegúrate de que esta carpeta exista y tenga permisos de escritura
+    $fileName = basename($_FILES['hoja-vida']['name']);
+    $hoja_vida_path = $uploadDir . uniqid() . '-' . $fileName; // Generar un nombre único para evitar conflictos
+
+    // Mover el archivo al directorio de destino
+    if (move_uploaded_file($_FILES['hoja-vida']['tmp_name'], $hoja_vida_path)) {
+        // Guardar la ruta en la base de datos
+        $sql = "INSERT INTO postulaciones (hoja_vida_path) VALUES (?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $hoja_vida_path);
+        $stmt->execute();
+        $stmt->close();
+    } else {
+        die('Error al mover el archivo.');
     }
-
-    // Leer el contenido del archivo
-    $hoja_vida = $_FILES['hoja-vida']['tmp_name'];
-    $hoja_vida_blob = addslashes(file_get_contents($hoja_vida));
-
-    // Aquí puedes proceder a almacenar $hoja_vida_blob en la base de datos
 }
 
 

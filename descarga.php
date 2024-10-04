@@ -22,38 +22,38 @@ if ($conn->connect_error) {
 if (isset($_GET['id'])) {
     $id_postulacion = intval($_GET['id']); // Asegurarse de que el ID sea un entero
 
-    // Consultar la base de datos para obtener el archivo
-    $sql = "SELECT hoja_vida FROM postulaciones WHERE id = ?";
+    // Consultar la base de datos para obtener la ruta del archivo
+    $sql = "SELECT hoja_vida_path FROM postulaciones WHERE id = ?";
     $stmt = $conn->prepare($sql);
     
     if ($stmt) {
         $stmt->bind_param("i", $id_postulacion);
         $stmt->execute();
-        $stmt->bind_result($hoja_vida_blob);
+        $stmt->bind_result($hoja_vida_path);
         $stmt->fetch();
         $stmt->close();
 
-        // Verificar si se encontró el archivo
-        if ($hoja_vida_blob) {
-            // Verificar que el contenido del blob no esté vacío
-            if (empty($hoja_vida_blob)) {
-                die("El archivo está vacío.");
+        // Verificar si se encontró la ruta del archivo
+        if ($hoja_vida_path) {
+            // Verificar que el archivo exista en el sistema de archivos
+            if (file_exists($hoja_vida_path)) {
+                // Establecer encabezados para la descarga
+                header('Content-Type: application/pdf'); // Tipo MIME del archivo
+                header('Content-Disposition: attachment; filename="' . basename($hoja_vida_path) . '"'); // Nombre del archivo al descargar
+                header('Content-Length: ' . filesize($hoja_vida_path)); // Longitud del contenido
+
+                // Limpiar el buffer de salida
+                ob_clean(); // Limpia el buffer de salida
+                flush(); // Asegura que se envíe el buffer
+
+                // Leer el archivo y enviarlo al navegador
+                readfile($hoja_vida_path);
+                exit; // Termina el script después de enviar el archivo
+            } else {
+                echo "Archivo no encontrado en el sistema de archivos.";
             }
-
-            // Establecer encabezados para la descarga
-            header('Content-Type: application/pdf'); // Tipo MIME del archivo
-            header('Content-Disposition: attachment; filename="hoja_vida.pdf"'); // Nombre del archivo al descargar
-            header('Content-Length: ' . strlen($hoja_vida_blob)); // Longitud del contenido
-
-            // Limpiar el buffer de salida
-            ob_clean(); // Limpia el buffer de salida
-            flush(); // Asegura que se envíe el buffer
-
-            // Enviar el contenido del archivo al navegador
-            echo $hoja_vida_blob;
-            exit; // Termina el script después de enviar el archivo
         } else {
-            echo "Archivo no encontrado.";
+            echo "Archivo no encontrado en la base de datos.";
         }
     } else {
         echo "Error en la preparación de la consulta.";
