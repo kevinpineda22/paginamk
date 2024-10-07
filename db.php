@@ -87,15 +87,37 @@ $numero_documento = $_POST['numero-documento']; // Nuevo campo agregado
 $recomendado = $_POST['recomendado'];
 
 
-
 // Manejo del archivo adjunto
-$hoja_vida_blob = null;
-if (isset($_FILES['hoja-vida']) && $_FILES['hoja-vida']['error'] == UPLOAD_ERR_OK) {
-    $hoja_vida = $_FILES['hoja-vida']['tmp_name'];
-    $hoja_vida_blob = addslashes(file_get_contents($hoja_vida));
+if (isset($_FILES['hoja_vida']) && $_FILES['hoja_vida']['error'] == UPLOAD_ERR_OK) {
+    $hoja_vida = $_FILES['hoja_vida'];
+    
+    // Validar el tamaño del archivo
+    $maxFileSize = 600 * 1024; // 600 KB 
+    if ($hoja_vida['size'] > $maxFileSize) {
+        echo "Error: El archivo excede el tamaño máximo permitido de 5 MB.";
+        exit;
+    }
+
+    // Validar que el archivo sea un PDF
+    $fileType = mime_content_type($hoja_vida['tmp_name']);
+    $fileExtension = strtolower(pathinfo($hoja_vida['name'], PATHINFO_EXTENSION));
+    
+    if ($fileType !== 'application/pdf' || $fileExtension !== 'pdf') {
+        echo "Error: Solo se permiten archivos PDF.";
+        exit;
+    }
+
+    // Leer el contenido del archivo
+    $hoja_vida_blob = file_get_contents($hoja_vida['tmp_name']); // No usar addslashes()
 } else {
-    $hoja_vida_blob = null; // Si el archivo no se sube, el campo puede ser null
+    if (isset($_FILES['hoja_vida'])) {
+        echo "Error: " . $_FILES['hoja_vida']['error'];
+    } else {
+        echo "Error: Debes subir un archivo de hoja de vida.";
+    }
+    exit;
 }
+
 
 
 
