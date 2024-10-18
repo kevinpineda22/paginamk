@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const numeroDocumento = document.getElementById('numero-documento')
     const inputHojaVida = document.getElementById('hoja_vida');
     
+   
     // Escuchar el evento de entrada para limpiar el mensaje de error
     telefono.addEventListener('input', function() {
         telefono.setCustomValidity(''); // Restablecer la validación al ingresar un nuevo valor
