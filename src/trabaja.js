@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const telefono = document.getElementById('telefono');
     const nombreApellido = document.getElementById('nombre-apellido');
     const numeroDocumento = document.getElementById('numero-documento')
-    const inputHojaVida = document.getElementById('hoja-vida');
+    const inputHojaVida = document.getElementById('hoja_vida');
     
     // Escuchar el evento de entrada para limpiar el mensaje de error
     telefono.addEventListener('input', function() {
