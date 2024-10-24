@@ -18,28 +18,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Mostrar el submenú cuando se pasa el mouse sobre el ítem de navegación (pantallas grandes)
   navItem.addEventListener("mouseenter", () => {
-    if (window.innerWidth > 874) { // Solo en pantallas grandes
+    if (window.innerWidth > 1008) { // Solo en pantallas grandes
       mostrarSubmenu();
     }
   });
 
   // Ocultar el submenú cuando se quita el mouse del ítem de navegación (pantallas grandes)
   navItem.addEventListener("mouseleave", () => {
-    if (window.innerWidth > 874) { // Solo en pantallas grandes
+    if (window.innerWidth > 1008) { // Solo en pantallas grandes
       ocultarSubmenu();
     }
   });
 
   // Ocultar el submenú cuando el mouse sale del área del submenú (pantallas grandes)
   subNav.addEventListener("mouseleave", () => {
-    if (window.innerWidth > 874) { // Solo en pantallas grandes
+    if (window.innerWidth > 1008) { // Solo en pantallas grandes
       ocultarSubmenu();
     }
   });
 
   // Mostrar el submenú cuando el mouse entra en el área del submenú (pantallas grandes)
   subNav.addEventListener("mouseenter", () => {
-    if (window.innerWidth > 874) { // Solo en pantallas grandes
+    if (window.innerWidth > 1008) { // Solo en pantallas grandes
       mostrarSubmenu();
     }
   });
@@ -47,14 +47,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Alternar la visibilidad del submenú en dispositivos móviles al hacer clic
   navItem.addEventListener("click", (event) => {
     event.stopPropagation();
-    if (window.innerWidth <= 874) { // Solo en pantallas móviles
+    if (window.innerWidth <= 1008) { // Solo en pantallas móviles
       mostrarSubmenu();
     }
   });
 
   // Alternar la visibilidad del menú de navegación en dispositivos móviles
   menuToggle.addEventListener("click", () => {
-    if (window.innerWidth <= 874) {
+    if (window.innerWidth <= 1008) {
       navList.classList.toggle("show");
     }
   });
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Cerrar el menú de navegación y desplazarse al contenido cuando se haga clic en cualquier enlace del submenú dentro de "Nosotros"
   submenuLinks.forEach(link => {
     link.addEventListener('click', () => {
-      if (window.innerWidth <= 874) { // Solo en pantallas móviles
+      if (window.innerWidth <= 1008) { // Solo en pantallas móviles
         navList.classList.remove('show');
       }
       

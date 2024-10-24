@@ -131,7 +131,7 @@ body {
 }
 
 /* Navbar para móviles - Ajustes */
-@media (max-width: 874px) {
+@media (max-width: 1008px) {
   /* Mostrar el botón de menú */
   .menu-toggle {
     display: block;
@@ -412,13 +412,19 @@ body {
 }
 
 .quick-links a:hover {
-    color: black; /* Verde agua brillante */
+    color: black; 
+    cursor: pointer;
 }
 
 .derechos {
     color: #ffffff;
     text-align: center;
     margin-top: 20px;
+}
+.derechos p:hover{
+  color: #000;
+  cursor: pointer;
+
 }
 
 /* Media Queries para pie de página en dispositivos móviles */
