@@ -786,3 +786,149 @@ main {
   }
   
 }
+/* Estilos para el fondo opaco */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con mayor opacidad */
+  display: none; /* Inicialmente oculto */
+  z-index: 1100; /* Debajo del banner */
+}
+
+/* Banner más atractivo */
+.banner-aniversario {
+  display: flex; /* Mostrado inicialmente */
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* Fijo para que se desplace con la página */
+  height: 614px;
+  width:700px;
+  top: 50%; /* Centrar verticalmente */
+  left: 50%; /* Centrar horizontalmente */
+  transform: translate(-50%, -50%); /* Ajustar para que esté centrado */
+  background: linear-gradient(135deg, #210D65, #89DC00); /* Fondo degradado */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); /* Sombra más intensa */
+  padding: 30px; /* Espaciado interno aumentado */
+  z-index: 1200; /* Asegúrate de que esté encima */
+  display: flex; /* Usar flexbox para el contenido */
+  flex-direction: column; /* Alinear el contenido en columna */
+  align-items: center; /* Centrar horizontalmente el contenido */
+  justify-content: center; /* Centrar verticalmente el contenido */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Transición suave */
+  opacity: 0; /* Inicialmente oculto */
+  animation: fadeIn 0.5s forwards; /* Efecto de aparición */
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%); /* Pequeña animación de entrada */
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Estilos para la imagen del banner */
+.banner-imagen {
+  width: 500px; /* Ancho de la imagen completo */
+  height: 500px;
+  border-radius: 10px; /* Bordes redondeados para la imagen */
+  margin-bottom: 15px; /* Espacio inferior para la imagen */
+  object-fit: contain
+}
+
+/* Contenido del banner */
+.banner-contenido h1 {
+  font-size: 2rem; /* Tamaño de fuente ajustado */
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  text-align: center; /* Centrar el texto */
+  color: #fff; /* Color del texto blanco */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Sombra para el texto */
+}
+
+.banner-contenido p {
+  font-size: 1rem; /* Tamaño de fuente ajustado */
+  margin-bottom: 15px; /* Espaciado más grande */
+  text-align: center; /* Centrar el texto */
+  color: #fff; /* Color del texto blanco */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Sombra para el texto */
+}
+
+.boton-promociones {
+  background-color: #210D65; /* Color del botón */
+  color: white;
+  padding: 12px 20px; /* Ajustar padding para mayor tamaño */
+  border: none;
+  border-radius: 25px; /* Bordes redondeados */
+  font-size: 1.1rem; /* Aumentar tamaño de fuente */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transición para el botón */
+  width: 100%; /* Ancho completo */
+  margin-top: 10px; /* Espacio superior para el botón */
+}
+
+.boton-promociones:hover {
+  background-color:  #89DC00; /* Color al pasar el cursor */
+  transform: scale(1.05); /* Efecto de aumento */
+}
+
+.close-button {
+  position: absolute; /* Fijo en la parte superior derecha */
+  top: 15px; /* Espaciado desde el top */
+  right: 15px; /* Espaciado desde la derecha */
+  background: none; /* Sin fondo */
+  border: none; /* Sin borde */
+  color: #fff; /* Color del texto */
+  font-size: 1.5rem; /* Tamaño del texto */
+  cursor: pointer; /* Cursor tipo puntero */
+  transition: color 0.3s ease; /* Transición suave al cambiar color */
+}
+
+.close-button:hover {
+  color: #210D65; /* Cambiar color al pasar el cursor */
+}
+
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .banner-aniversario {
+    width: 80%; /* Cambiar el ancho máximo en pantallas pequeñas */
+    padding: 20px; /* Ajustar el espaciado interno */
+  }
+
+
+  .banner-contenido h1 {
+    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
+  }
+
+  .banner-contenido p {
+    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-aniversario {
+    width: 80%; /* Cambiar el ancho máximo en pantallas pequeñas */
+    padding: 20px; /* Ajustar el espaciado interno */
+  }
+  .banner-imagen{
+    width: 100%; 
+  }
+
+
+  .banner-contenido h1 {
+    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
+  }
+
+  .banner-contenido p {
+    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+  }
+}
