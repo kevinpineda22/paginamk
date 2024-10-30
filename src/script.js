@@ -207,7 +207,7 @@ playButton.ondragstart = function () {
     return false;
 };
 
-document.addEventListener("DOMContentLoaded", function () {
+
   const banner = document.querySelector(".banner-aniversario");
   const cerrarBanner = document.querySelector(".close-button"); // Asegúrate de que el botón tenga la clase correcta
   const overlay = document.querySelector(".overlay");
@@ -234,4 +234,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Ocultar el banner al hacer clic en la superposición
   overlay.addEventListener("click", ocultarBannerYOverlay);
-});
+
