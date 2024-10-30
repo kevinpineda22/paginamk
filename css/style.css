@@ -361,7 +361,7 @@ body {
 .footer {
     width: 100%;
     padding: 20px;
-    background-color: #89DC00;
+    background-color: #210D65;
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -795,7 +795,7 @@ main {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con mayor opacidad */
   display: none; /* Inicialmente oculto */
-  z-index: 1000; /* Debajo del banner */
+  z-index: 1050; /* Debajo del banner */
 }
 
 /* Banner más atractivo */
@@ -813,7 +813,7 @@ main {
   border-radius: 15px; /* Bordes redondeados */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); /* Sombra más intensa */
   padding: 30px; /* Espaciado interno aumentado */
-  z-index: 1000; /* Asegúrate de que esté encima */
+  z-index: 1100; /* Asegúrate de que esté encima */
   display: flex; /* Usar flexbox para el contenido */
   flex-direction: column; /* Alinear el contenido en columna */
   align-items: center; /* Centrar horizontalmente el contenido */
@@ -830,24 +830,6 @@ main {
   border-radius: 10px; /* Bordes redondeados para la imagen */
   margin-bottom: 15px; /* Espacio inferior para la imagen */
   object-fit: contain
-}
-
-/* Contenido del banner */
-.banner-contenido h1 {
-  font-size: 2rem; /* Tamaño de fuente ajustado */
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  text-align: center; /* Centrar el texto */
-  color: #fff; /* Color del texto blanco */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Sombra para el texto */
-}
-
-.banner-contenido p {
-  font-size: 1rem; /* Tamaño de fuente ajustado */
-  margin-bottom: 15px; /* Espaciado más grande */
-  text-align: center; /* Centrar el texto */
-  color: #fff; /* Color del texto blanco */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Sombra para el texto */
 }
 
 .boton-promociones {
@@ -896,7 +878,6 @@ main {
   }
 }
 
-
 /* Media query para pantallas más pequeñas */
 @media (max-width: 768px) {
   .banner-aniversario {
@@ -904,14 +885,6 @@ main {
     padding: 20px; /* Ajustar el espaciado interno */
   }
 
-
-  .banner-contenido h1 {
-    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
-  }
-
-  .banner-contenido p {
-    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
-  }
 }
 
 @media (max-width: 480px) {
@@ -921,14 +894,5 @@ main {
   }
   .banner-imagen{
     width: 100%; 
-  }
-
-
-  .banner-contenido h1 {
-    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
-  }
-
-  .banner-contenido p {
-    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
   }
 }
