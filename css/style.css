@@ -795,7 +795,7 @@ main {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con mayor opacidad */
   display: none; /* Inicialmente oculto */
-  z-index: 1100; /* Debajo del banner */
+  z-index: 1000; /* Debajo del banner */
 }
 
 /* Banner más atractivo */
@@ -813,7 +813,7 @@ main {
   border-radius: 15px; /* Bordes redondeados */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); /* Sombra más intensa */
   padding: 30px; /* Espaciado interno aumentado */
-  z-index: 1200; /* Asegúrate de que esté encima */
+  z-index: 1000; /* Asegúrate de que esté encima */
   display: flex; /* Usar flexbox para el contenido */
   flex-direction: column; /* Alinear el contenido en columna */
   align-items: center; /* Centrar horizontalmente el contenido */
@@ -821,18 +821,6 @@ main {
   transition: transform 0.5s ease, opacity 0.5s ease; /* Transición suave */
   opacity: 0; /* Inicialmente oculto */
   animation: fadeIn 0.5s forwards; /* Efecto de aparición */
-}
-
-/* Animación de aparición */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -45%); /* Pequeña animación de entrada */
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
 }
 
 /* Estilos para la imagen del banner */
@@ -894,6 +882,18 @@ main {
 
 .close-button:hover {
   color: #210D65; /* Cambiar color al pasar el cursor */
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%); /* Pequeña animación de entrada */
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
 
 
