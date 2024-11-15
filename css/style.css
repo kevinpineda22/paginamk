@@ -786,91 +786,90 @@ main {
   }
   
 }
-/* Estilos para el fondo opaco */
-.overlay {
+/*diseño del banner*/
+/* .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con mayor opacidad */
-  display: none; /* Inicialmente oculto */
-  z-index: 1050; /* Debajo del banner */
+  background-color: rgba(0, 0, 0, 0.7); 
+  display: none; 
+  z-index: 1050;
 }
 
-/* Banner más atractivo */
+
 .banner-aniversario {
-  display: flex; /* Mostrado inicialmente */
+  display: flex; 
   justify-content: center;
   align-items: center;
-  position: fixed; /* Fijo para que se desplace con la página */
+  position: fixed;
   height: 614px;
   width:700px;
-  top: 50%; /* Centrar verticalmente */
-  left: 50%; /* Centrar horizontalmente */
-  transform: translate(-50%, -50%); /* Ajustar para que esté centrado */
-  background: linear-gradient(135deg, #210D65, #89DC00); /* Fondo degradado */
-  border-radius: 15px; /* Bordes redondeados */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); /* Sombra más intensa */
-  padding: 30px; /* Espaciado interno aumentado */
-  z-index: 1100; /* Asegúrate de que esté encima */
-  display: flex; /* Usar flexbox para el contenido */
-  flex-direction: column; /* Alinear el contenido en columna */
-  align-items: center; /* Centrar horizontalmente el contenido */
-  justify-content: center; /* Centrar verticalmente el contenido */
-  transition: transform 0.5s ease, opacity 0.5s ease; /* Transición suave */
-  opacity: 0; /* Inicialmente oculto */
-  animation: fadeIn 0.5s forwards; /* Efecto de aparición */
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  background: linear-gradient(135deg, #210D65, #89DC00); 
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); 
+  padding: 30px; 
+  z-index: 1100;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  transition: transform 0.5s ease, opacity 0.5s ease; 
+  opacity: 0; 
+  animation: fadeIn 0.5s forwards; 
 }
 
-/* Estilos para la imagen del banner */
+
 .banner-imagen {
-  width: 500px; /* Ancho de la imagen completo */
+  width: 500px; 
   height: 500px;
-  border-radius: 10px; /* Bordes redondeados para la imagen */
-  margin-bottom: 15px; /* Espacio inferior para la imagen */
+  border-radius: 10px; 
+  margin-bottom: 15px; 
   object-fit: contain
 }
 
 .boton-promociones {
-  background-color: #210D65; /* Color del botón */
+  background-color: #210D65; 
   color: white;
-  padding: 12px 20px; /* Ajustar padding para mayor tamaño */
+  padding: 12px 20px;
   border: none;
-  border-radius: 25px; /* Bordes redondeados */
-  font-size: 1.1rem; /* Aumentar tamaño de fuente */
+  border-radius: 25px;
+  font-size: 1.1rem; 
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Transición para el botón */
-  width: 100%; /* Ancho completo */
-  margin-top: 10px; /* Espacio superior para el botón */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%; 
+  margin-top: 10px; 
 }
 
 .boton-promociones:hover {
-  background-color:  #89DC00; /* Color al pasar el cursor */
-  transform: scale(1.05); /* Efecto de aumento */
+  background-color:  #89DC00; 
+  transform: scale(1.05); 
 }
 
 .close-button {
-  position: absolute; /* Fijo en la parte superior derecha */
-  top: 15px; /* Espaciado desde el top */
-  right: 15px; /* Espaciado desde la derecha */
-  background: none; /* Sin fondo */
-  border: none; /* Sin borde */
-  color: #fff; /* Color del texto */
-  font-size: 1.5rem; /* Tamaño del texto */
-  cursor: pointer; /* Cursor tipo puntero */
-  transition: color 0.3s ease; /* Transición suave al cambiar color */
+  position: absolute; 
+  right: 15px; 
+  background: none; 
+  border: none; 
+  color: #fff; 
+  font-size: 1.5rem;
+  cursor: pointer; 
+  transition: color 0.3s ease; 
 }
 
 .close-button:hover {
-  color: #210D65; /* Cambiar color al pasar el cursor */
+  color: #210D65; 
 }
 
-/* Animación de aparición */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translate(-50%, -45%); /* Pequeña animación de entrada */
+    transform: translate(-50%, -45%); 
   }
   to {
     opacity: 1;
@@ -878,21 +877,20 @@ main {
   }
 }
 
-/* Media query para pantallas más pequeñas */
+
 @media (max-width: 768px) {
   .banner-aniversario {
-    width: 80%; /* Cambiar el ancho máximo en pantallas pequeñas */
-    padding: 20px; /* Ajustar el espaciado interno */
+    width: 80%; 
+    padding: 20px; 
   }
 
 }
 
 @media (max-width: 480px) {
   .banner-aniversario {
-    width: 80%; /* Cambiar el ancho máximo en pantallas pequeñas */
-    padding: 20px; /* Ajustar el espaciado interno */
+    width: 80%; 
   }
   .banner-imagen{
     width: 100%; 
   }
-}
+} */
