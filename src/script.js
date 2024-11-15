@@ -207,31 +207,32 @@ playButton.ondragstart = function () {
     return false;
 };
 
+// function del banner
 
-  const banner = document.querySelector(".banner-aniversario");
-  const cerrarBanner = document.querySelector(".close-button"); // Asegúrate de que el botón tenga la clase correcta
-  const overlay = document.querySelector(".overlay");
+  // const banner = document.querySelector(".banner-aniversario");
+  // const cerrarBanner = document.querySelector(".close-button"); // Asegúrate de que el botón tenga la clase correcta
+  // const overlay = document.querySelector(".overlay");
 
-  // Mostrar el banner y la superposición después de 1 segundo cuando se carga la página
-  setTimeout(() => {
-    banner.classList.add("mostrar"); // Añade la clase para mostrar el banner
-    banner.style.display = "flex"; // Asegura que el banner se vea
-    overlay.style.display = "block"; // Muestra la superposición
-  }, 1000);
+  // // Mostrar el banner y la superposición después de 1 segundo cuando se carga la página
+  // setTimeout(() => {
+  //   banner.classList.add("mostrar"); // Añade la clase para mostrar el banner
+  //   banner.style.display = "flex"; // Asegura que el banner se vea
+  //   overlay.style.display = "block"; // Muestra la superposición
+  // }, 1000);
 
-  // Función para ocultar el banner y la superposición
-  const ocultarBannerYOverlay = () => {
-    banner.classList.add("ocultar"); // Añade la clase para ocultar con deslizamiento
-    overlay.style.display = "none"; // Oculta la superposición
+  // // Función para ocultar el banner y la superposición
+  // const ocultarBannerYOverlay = () => {
+  //   banner.classList.add("ocultar"); // Añade la clase para ocultar con deslizamiento
+  //   overlay.style.display = "none"; // Oculta la superposición
 
-    setTimeout(() => {
-      banner.style.display = "none"; // Después de la animación, esconde completamente el banner
-    }, 500); // El tiempo debe coincidir con la duración de la transición en el CSS
-  };
+  //   setTimeout(() => {
+  //     banner.style.display = "none"; // Después de la animación, esconde completamente el banner
+  //   }, 500); // El tiempo debe coincidir con la duración de la transición en el CSS
+  // };
 
-  // Ocultar el banner al hacer clic en el botón de cerrar
-  cerrarBanner.addEventListener("click", ocultarBannerYOverlay);
+  // // Ocultar el banner al hacer clic en el botón de cerrar
+  // cerrarBanner.addEventListener("click", ocultarBannerYOverlay);
 
-  // Ocultar el banner al hacer clic en la superposición
-  overlay.addEventListener("click", ocultarBannerYOverlay);
+  // // Ocultar el banner al hacer clic en la superposición
+  // overlay.addEventListener("click", ocultarBannerYOverlay);
 
