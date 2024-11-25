@@ -20,7 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
   navItem.addEventListener("mouseenter", () => {
     if (window.innerWidth > 1008) { // Solo en pantallas grandes
       mostrarSubmenu();
+      
+      
     }
+    
+    
   });
 
   // Ocultar el submenú cuando se quita el mouse del ítem de navegación (pantallas grandes)

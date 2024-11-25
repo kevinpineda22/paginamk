@@ -59,7 +59,7 @@ botonInicioSesion.addEventListener('click', async (e) => {
         confirmButtonText: 'Continuar'
       }).then(() => {
         // Redirigir a otra página dentro de tu aplicación
-        window.location.href = ''; // Cambia la URL por la ruta deseada
+        window.location.href = 'https://reservas-psi.vercel.app/'; // Cambia la URL por la ruta deseada
         console.log('Redirigiendo a:', window.location.href);
       });
 
