@@ -142,3 +142,15 @@ auth.onAuthStateChanged((usuario) => {
     console.log('Usuario inactivo');
   }
 });
+window.lupaContraseña = function(inputId) {
+  const passwordInput = document.getElementById(inputId);
+  const icon = passwordInput.parentNode.querySelector('.toggle-password');
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    icon.innerHTML = "&#128065;";
+  } else {
+    passwordInput.type = "password";
+    icon.innerHTML = "&#128065;";
+  }
+}
